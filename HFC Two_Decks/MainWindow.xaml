@@ -1,0 +1,38 @@
+﻿<Window x:Class="HFC_Two_Decks.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HFC_Two_Decks"
+        mc:Ignorable="d"
+        Title="Two Decks" Height="450" Width="400" Background="Bisque">
+    <Window.Resources>
+        <local:Deck x:Key="leftDeck" />
+        <local:Deck x:Key="rightDeck" />
+    </Window.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Deck _1" Margin="10,0,0,0" Target="{Binding ElementName=d1_listBox, Mode=OneWay}"/>
+        <Label Content="Deck _2" Grid.Column="1" Margin="10,0,0,0" Target="{Binding ElementName=d2_listBox, Mode=OneWay}" />
+        <ListBox x:Name="d1_listBox" Grid.Column="0" Grid.Row="1" Margin="10,0,10,10" ItemsSource="{DynamicResource leftDeck}"
+                 MouseDoubleClick="d1_listBox_MouseDoubleClick" KeyDown="d1_listBox_KeyDown"/>
+        <ListBox x:Name="d2_listBox" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" ItemsSource="{DynamicResource rightDeck}" 
+                 MouseDoubleClick="d2_listBox_MouseDoubleClick" KeyDown="d2_listBox_KeyDown"/>
+
+        <Button x:Name="shuffleButton" Grid.Row="2" Content="_Shuffle" Margin="10,0,10,10" Click="shuffleButton_Click"/>
+        <Button x:Name="resetButton" Grid.Row="3" Content="_Reset" Margin="10,0,10,10" Click="resetButton_Click" />
+        <Button x:Name="clearButton" Grid.Column="1" Grid.Row="2" Content="_Clear" Margin="10,0,10,10" Click="clearButton_Click"/>
+        <Button x:Name="sortButton" Grid.Column="1" Grid.Row="3" Content="Sor_t" Margin="10,0,10,10" Click="sortButton_Click"/>
+    </Grid>
+</Window>
