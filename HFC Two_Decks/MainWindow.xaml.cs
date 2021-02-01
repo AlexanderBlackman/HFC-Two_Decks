@@ -47,32 +47,42 @@ namespace HFC_Two_Decks
 
         private void shuffleButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Resources["leftDeck"] is Deck leftDeck)
+                leftDeck.Shuffle();
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Resources["rightDeck"] is Deck rightDeck)
+            {
+                rightDeck.Clear();
+            }
         }
 
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Resources["leftDeck"] is Deck leftDeck)
+            {
+                leftDeck.Reset();
+            }
         }
 
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Resources["rightDeck"] is Deck rightDeck)
+            {
+                rightDeck.Sort();
+            }
         }
 
         private void d1_listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            MoveCard(true);
         }
 
         private void d2_listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            MoveCard(false);
         }
 
         private void d2_listBox_KeyDown(object sender, KeyEventArgs e)
